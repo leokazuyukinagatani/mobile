@@ -21,7 +21,7 @@
 
 
 ## Stack utilizada
-React Native, StyleSheet, Expo, Native Base
+React Native, Expo, Native Base
 
 ## Rodando localmente
 
@@ -61,8 +61,9 @@ Que melhorias você fez no seu código? Ex: refatorações, melhorias de perform
 O que você aprendeu construindo esse projeto? Quais desafios você enfrentou e como você superou-os?
 
 - Utilizar React Native
-
-
+- Utilizar Native Base
+- Utilizar Autenticação OAuth2 utilizando o expo-auth-session
+- Utilizar o redirecionamento para o app novamente com o expo-web-browser
 
 ## Suporte
 
