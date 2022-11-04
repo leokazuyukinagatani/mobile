@@ -64,7 +64,7 @@ O que você aprendeu construindo esse projeto? Quais desafios você enfrentou e 
 - Utilizar Native Base
 - Utilizar Autenticação OAuth2 utilizando o expo-auth-session
 - Utilizar o redirecionamento para o app novamente com o expo-web-browser
-
+- Utilizar navegação com React Navigation(utilizando tabs)
 ## Suporte
 
 Para suporte, mande um email para [leokazuyukinagatani@gmail.com](mailto:leokazuyukinagatani@gmail.com?subject=nlw-esports-mobile)
