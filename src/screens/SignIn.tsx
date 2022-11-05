@@ -3,10 +3,32 @@ import { Fontisto } from '@expo/vector-icons'
 import Logo from '../assets/logo.svg'
 import { Button } from '../components/Button'
 import { useAuth } from '../hooks/useAuth' 
+import { useEffect } from 'react'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import { api } from '../services/api'
 
 export function SignIn(){
-  const { signIn, isUserLoading } = useAuth()
+  const { signIn, isUserLoading, user, setUser } = useAuth()
 
+  useEffect(() => {
+    (async () => {
+      try {
+        const token = await AsyncStorage.getItem("@storage_Key:token")
+        if(!token) {
+          throw new Error
+        }
+        api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+        const userInfoResponse = await api.get("/me")
+        if(!user) {
+          throw new Error
+        }
+        setUser(userInfoResponse.data.user);
+      } catch(error) { 
+        await AsyncStorage.removeItem("@storage_key:token")
+      }
+    }
+    )
+  }, [user])
   return(
     <Center flex={1} bgColor="gray.900" p={7}>
       <Logo width={212} height={40} />
