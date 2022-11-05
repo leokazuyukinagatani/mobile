@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useState, useEffect } from "react";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Google from "expo-auth-session/providers/google";
 import * as AuthSession from "expo-auth-session";
 import * as WebBrowser from "expo-web-browser";
@@ -14,6 +15,7 @@ export interface AuthContextDataProps {
   user: UserProps;
   isUserLoading: boolean;
   signIn: () => Promise<void>;
+  setUser: ({}: UserProps) => void; // add
 }
 
 interface AuthProviderProps {
@@ -55,7 +57,9 @@ export function AuthContextProvider({ children }: AuthProviderProps) {
     
       const userInfoResponse = await api.get('/me')
       setUser(userInfoResponse.data.user)
-      
+
+      await AsyncStorage.setItem("@storage_key:token", tokenResponse.data.token);
+
     }catch(error) {
       console.log(error)
       throw error
@@ -75,6 +79,7 @@ export function AuthContextProvider({ children }: AuthProviderProps) {
         signIn,
         isUserLoading,
         user,
+        setUser
       }}
     >
       {children}
