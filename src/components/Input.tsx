@@ -15,6 +15,7 @@ export function Input({ ...rest }: IInputProps) {
         bg: "gray.800",
         borderColor: "gray.600"
       }}
+      
       {...rest}
     />
   );

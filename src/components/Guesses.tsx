@@ -74,7 +74,7 @@ export function Guesses({ poolId, code }: Props) {
 
   useEffect(() => {
     fetchGames();
-  }, []);
+  }, [poolId]);
 
   if (isLoading) {
     return <Loading />
@@ -83,6 +83,7 @@ export function Guesses({ poolId, code }: Props) {
   return (
     <FlatList
       data={games}
+      mb={20}
       keyExtractor={item => item.id}
       renderItem={({ item }) => (
         <Game
@@ -94,6 +95,7 @@ export function Guesses({ poolId, code }: Props) {
       )}
       _contentContainerStyle={{ pb: 10 }}
       ListEmptyComponent={() => <EmptyMyPoolList code={code} />}
+    
     />
   );
 }

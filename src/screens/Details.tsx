@@ -75,7 +75,7 @@ export function Details() {
         <VStack px={5} flex={1}>
           <PoolHeader data={poolDetails} />
 
-          <HStack bgColor="gray.800" p={1} rounded="sm" mb={8}>
+          <HStack bgColor="gray.800" p={1} rounded="sm" mb={5}>
             <Option
               title="Seus palpites"
               isSelected={optionSelected === "guesses"}
@@ -88,7 +88,7 @@ export function Details() {
             />
           </HStack>
 
-          <Guesses poolId={poolDetails.id} code={poolDetails.code} />
+          <Guesses poolId={poolDetails.id} code={poolDetails.code}/>
         </VStack>
       ) : (
         <EmptyMyPoolList code={poolDetails.code} />
