@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { VStack, Icon, useToast, FlatList } from "native-base";
 import { Button } from "../components/Button";
 import { Header } from "../components/Header";
@@ -6,7 +6,9 @@ import { PoolCard, PoolCardProps } from "../components/PoolCard";
 import { Loading } from "../components/Loading";
 import { Octicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import { useFocusEffect } from "@react-navigation/native";
 import { api } from "../services/api";
+import { EmptyPoolList } from "../components/EmptyPoolList";
 
 export function Pools() {
   const [isLoading, setIsLoading] = useState(false);
@@ -35,9 +37,12 @@ export function Pools() {
       setIsLoading(false);
     }
   }
-  useEffect(() => {
+
+  useFocusEffect(useCallback(() => {
     fetchPools();
-  }, []);
+  }, []));
+
+
   return (
     <VStack flex={1} background="gray.900">
       <Header title="Meus bolões" />
@@ -67,6 +72,7 @@ export function Pools() {
           px={5}
           showsVerticalScrollIndicator={false}
           _contentContainerStyle={{pb: 10}}
+          ListEmptyComponent={() => <EmptyPoolList/>}
         />
       )}
     </VStack>
