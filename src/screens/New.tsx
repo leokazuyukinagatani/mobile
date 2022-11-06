@@ -12,7 +12,7 @@ export function New() {
   const [isLoading, setIsLoading] = useState(false);
   const toast = useToast();
   const errorTitle = "error-title-toast";
-  const errorServer = "error-title-toast";
+  const errorServer = "error-server-toast";
 
   async function handlePoolCreate() {
     if (!title.trim()) {
